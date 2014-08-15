@@ -132,7 +132,7 @@ def add_audio_item(infolabels,parameters={},img='',total=0):
     listitem=xbmcgui.ListItem(infolabels[STR_TITLE],infolabels[STR_ARTIST],iconImage=img,thumbnailImage=img)
     listitem.setInfo('Music',infolabels)
     listitem.setProperty('IsPlayable','true')
-    url=sys.argv[0]+'?'+urllib.urlencode(parameters)
+    url = construct_plugin_url(base_url=sys.argv[0], parameters=parameters)
     xbmcplugin.addDirectoryItem(plugin_handle,url,listitem,isFolder=False,totalItems=total)
 
 
@@ -145,7 +145,19 @@ def add_folder_item(name,infolabels={},parameters={},img=''):
     url = construct_plugin_url(base_url=sys.argv[0], parameters=parameters)
     return xbmcplugin.addDirectoryItem(handle=plugin_handle,url=url,listitem=listitem,isFolder=True)
 
+def construct_xbmc_directory_item(plugin_handle, base_url, parameters, item_name, icon_image='', info_labels={}, item_type='menu' ):
+    target_url = construct_plugin_url(base_url=sys.argv[0], parameters=parameters)
+    if not info_labels:
+        info_labels = {STR_TITLE:item_name}
+    if item_type == 'menu':
+        xbmc_list_item = xbmcgui.ListItem(item_name, iconImage = icon_image, thumbnailImage = icon_image)
+    elif item_type == 'audio':
+        xbmc_list_item = xbmcgui.ListItem(info_labels[STR_TITLE],info_labels[STR_ARTIST], iconImage = icon_image, thumbnailImage = icon_image)
+        xbmc_list_item.setProperty('IsPlayable', 'true')
+    xbmc_list_item.setInfo('Music', info_labels)
+    xbmcplugin.addDirectoryItem(handle=plugin_handle, url=target_url, listitem=xbmc_list_item, isFolder=is_folder)
 
+'''TODO add a version of show_home_menu and others using construct_xbmc_directory_item'''
 
 def show_home_menu():
     add_folder_item(name=STRLOC_MAINMENU_HOT,parameters={STR_MODE:MODE_HOT,STR_OFFSET:0})
