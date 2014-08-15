@@ -33,7 +33,9 @@ def parameters_string_to_dict(parameters):
     return paramDict
 
 def construct_plugin_url(base_url, parameters={}):
-    if len(parameters) > 0:
+    if base_url and len(parameters) > 0:
         return base_url + '?' + urllib.urlencode(parameters)
-    else:
+    elif base_url:
         return base_url
+    else:
+        raise Exception('Cannot construct plugin url. Missing base_url', 'contruct_plugin_url')

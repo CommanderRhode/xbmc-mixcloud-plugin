@@ -145,13 +145,7 @@ def add_folder_item(name,infolabels={},parameters={},img=''):
     url = construct_plugin_url(base_url=sys.argv[0], parameters=parameters)
     return xbmcplugin.addDirectoryItem(handle=plugin_handle,url=url,listitem=listitem,isFolder=True)
 
-def construct_xbmc_list_item(name, infolabels={}, parameters={}, img='', isFolder=False):
 
-
-    menuItemHot = {}
-
-def construct_plugin_url(base_url, parameters={}):
-    return base_url + '?' + urllib.urlencode(parameters)
 
 def show_home_menu():
     add_folder_item(name=STRLOC_MAINMENU_HOT,parameters={STR_MODE:MODE_HOT,STR_OFFSET:0})

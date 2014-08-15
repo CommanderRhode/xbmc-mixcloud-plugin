@@ -51,5 +51,15 @@ class TestMain(unittest.TestCase):
         expected_url = 'plugin://plugin.video.myaddon/'
         self.assertEqual(construct_plugin_url(base_url=base_url, parameters=query_parameters),expected_url)
 
+    def test_construct_plugin_url_with_unpopulated_base_url_throws_exception(self):
+        query_parameters = {}
+        base_url = ''
+        expected_exception_message = 'Cannot construct plugin url. Missing base_url'
+        try:
+            construct_plugin_url(base_url=base_url, parameters=query_parameters)
+        except Exception as exception:
+            self.assertEqual(exception.args[0], expected_exception_message)
+
+
 if __name__ == '__main__':
     unittest.main()
