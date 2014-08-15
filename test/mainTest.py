@@ -37,6 +37,19 @@ class TestMain(unittest.TestCase):
         self.assertEqual(parameterPairs['foo'],'bar')
         self.assertEqual(parameterPairs['gold'],'silver')
 
+    def test_construct_plugin_url_with_populated_base_url_and_paramaters_gives_a_string(self):
+        query_parameters = {}
+        query_parameters['foo'] = 'bar'
+        query_parameters['gold'] ='silver'
+        base_url = 'plugin://plugin.video.myaddon/'
+        expected_url = 'plugin://plugin.video.myaddon/?foo=bar&gold=silver'
+        self.assertEqual(construct_plugin_url(base_url=base_url, parameters=query_parameters),expected_url)
+
+    def test_construct_plugin_url_with_populated_base_url_but_not_paramaters_gives_a_string(self):
+        query_parameters = {}
+        base_url = 'plugin://plugin.video.myaddon/'
+        expected_url = 'plugin://plugin.video.myaddon/'
+        self.assertEqual(construct_plugin_url(base_url=base_url, parameters=query_parameters),expected_url)
 
 if __name__ == '__main__':
     unittest.main()

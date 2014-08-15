@@ -20,6 +20,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with XBMC MixCloud Plugin.  If not, see <http://www.gnu.org/licenses/>.
 '''
+import urllib
 
 def parameters_string_to_dict(parameters):
     paramDict={}
@@ -30,3 +31,9 @@ def parameters_string_to_dict(parameters):
             if len(paramSplits)==2:
                 paramDict[paramSplits[0]]=paramSplits[1]
     return paramDict
+
+def construct_plugin_url(base_url, parameters={}):
+    if len(parameters) > 0:
+        return base_url + '?' + urllib.urlencode(parameters)
+    else:
+        return base_url
