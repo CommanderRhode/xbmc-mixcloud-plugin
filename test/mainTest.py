@@ -19,6 +19,10 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with XBMC MixCloud Plugin.  If not, see <http://www.gnu.org/licenses/>.
+
+To execute the tests, navigate to this test folder and execute: python ./mainTest.py
+
+You may have to make the file executable: chmod +x mainTest.py
 '''
 
 import sys
