@@ -25,7 +25,9 @@ import urllib
 def parameters_string_to_dict(parameters):
     paramDict={}
     if parameters:
-        paramPairs=parameters[1:].split("&")
+        if parameters.startswith("?"):
+            parameters = parameters[1:]
+        paramPairs=parameters.split("&")
         for paramsPair in paramPairs:
             paramSplits=paramsPair.split('=')
             if len(paramSplits)==2:

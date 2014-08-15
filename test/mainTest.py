@@ -32,8 +32,22 @@ import unittest
 
 
 class TestMain(unittest.TestCase):
-    def test_parameters_string_to_dict(self):
+    def test_parameters_string_to_dict_with_string_gives_proper_pairs(self):
         parameterPairs = parameters_string_to_dict('?foo=bar&gold=silver')
+        self.assertEqual(parameterPairs['foo'],'bar')
+        self.assertEqual(parameterPairs['gold'],'silver')
+
+    def test_parameters_string_to_dict_with_malformed_second_pair_gives_first_pair_only(self):
+        parameterPairs = parameters_string_to_dict('?foo=bar&whataloadofrubbish')
+        self.assertEqual(parameterPairs['foo'],'bar')
+        self.assertEqual(len(parameterPairs), 1)
+
+    def test_parameters_string_to_dict_with_no_parameters_gives_empty_array(self):
+        parameterPairs = parameters_string_to_dict('')
+        self.assertEqual(len(parameterPairs), 0)
+
+    def test_parameters_string_to_dict_with_parameters_but_no_query_gives_proper_pairs(self):
+        parameterPairs = parameters_string_to_dict('foo=bar&gold=silver')
         self.assertEqual(parameterPairs['foo'],'bar')
         self.assertEqual(parameterPairs['gold'],'silver')
 
