@@ -178,7 +178,7 @@ def show_popular_menu(offset):
     found=get_cloudcasts(URL_POPULAR,{STR_LIMIT:limit,STR_OFFSET:offset})
     if found==limit:
         add_folder_item(name=STRLOC_COMMON_MORE,parameters={STR_MODE:MODE_POPULAR,STR_OFFSET:offset+limit})
-    xbmcplugin.endOfDirectory(handle=plugin_handle,succeeded=True)    
+    xbmcplugin.endOfDirectory(handle=plugin_handle,succeeded=True)
 
 
 
@@ -424,7 +424,7 @@ def get_stream(cloudcast_key):
     while (not strm) and dialog.yesno('MixCloud',STRLOC_COMMON_RESOLVER_ERROR):
         if debugenabled:
             print('changing resolver')
-		
+
         resolverid=resolverid+1
         if resolverid>Resolver.offliberty:
             resolverid=Resolver.local
@@ -496,7 +496,7 @@ def get_query(query=''):
     else:
         query=''
     return query;
-    
+
 
 
 def parameters_string_to_dict(parameters):
