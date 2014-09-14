@@ -1,23 +1,15 @@
-============================================
-
-XBMC Mixcloud Plugin - jackyNIX
-
-============================================
+#XBMC Mixcloud Plugin - jackyNIX
 
 [<img src="https://travis-ci.org/CommanderRhode/xbmc-mixcloud-plugin.svg?branch=master" align="right" alt="Build Status" />](https://travis-ci.org/CommanderRhode/xbmc-mixcloud-plugin)
 
-Contributors:
+###Contributors:
 	-	jackyNIX
 	-	Bochi
 	-	SilentException
 
-============================================
+###Current version: 1.1.4 frodo
 
-Current version: 1.1.4 frodo
-
-============================================
-
-Features:
+##Features:
   - Browse
     - New
     - Hot
@@ -36,5 +28,3 @@ Features:
     - Dutch
     - French
     - German
-
-============================================
