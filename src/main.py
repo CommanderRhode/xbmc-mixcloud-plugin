@@ -40,4 +40,4 @@ def construct_plugin_url(base_url, parameters={}):
     elif base_url:
         return base_url
     else:
-        raise Exception('Cannot construct plugin url. Missing base_url', 'contruct_plugin_url')
+        raise Exception('Cannot construct plugin url. Missing base_url', 'construct_plugin_url')
